@@ -1,11 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Project
 from django.contrib.auth.forms import (UserCreationForm,
                                        AuthenticationForm,
                                        PasswordResetForm,
                                        SetPasswordForm
                                        )
-from .models import Article
+
 
 class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -90,5 +91,4 @@ class UserRegistrationForm(UserCreationForm):
 class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = ['user']
-        
+        exclude = ['editor']
