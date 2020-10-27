@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tinymce',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -81,10 +82,13 @@ WSGI_APPLICATION = 'awards.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME':'awards',
+           'USER': 'moringa',
+           'PASSWORD': 'Access',
+       }
     }
-}
+
 
 
 # Password validation
