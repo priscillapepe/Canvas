@@ -1,24 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django .http import HttpResponse
-from.models import post
+from.models import Project
 from .forms import NewProjectForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 
 def home(request):
-    context={
-        'posts':post.objects.all()
-        }
-    return render(request, 'avi/home.html',context)
+    
+    return render(request, 'avi/home.html')
 
 def about(request):
      return render(request, 'avi/about.html',)
 
-def new_project(request):
 
 
-@login_required(login_url='/accounts/login/')
+
+# @login_required(login_url='/accounts/login/')
 def new_project(request):
     current_user = request.user
     if request.method == 'POST':
@@ -31,4 +30,4 @@ def new_project(request):
 
     else:
         form = NewProjectForm()
-    return render(request, 'new_project.html', {"form": form})
+    return render(request, 'avi/new_project.html', {"form": form})
