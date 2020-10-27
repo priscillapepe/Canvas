@@ -8,8 +8,13 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    
-    return render(request, 'avi/home.html')
+    projects = Project.objects.all()
+
+    return render(request,'avi/home.html',{'projects':projects})
+
+
+
+    # return render(request, 'avi/home.html')
 
 def about(request):
      return render(request, 'avi/about.html',)
@@ -17,7 +22,7 @@ def about(request):
 
 
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def new_project(request):
     current_user = request.user
     if request.method == 'POST':
@@ -30,4 +35,4 @@ def new_project(request):
 
     else:
         form = NewProjectForm()
-    return render(request, 'avi/new_project.html', {"form": form})
+    return render(request, 'avi/add-project.html', {"form": form})

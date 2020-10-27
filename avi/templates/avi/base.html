@@ -12,40 +12,12 @@
      {%if title%}
     <title>Avi -{{title}}</title>
      {%else%}
-      <title>Avi</title>
+      <title>Awards</title>
      {% endif %}
 </head>
 <body>
-<header class="site-header">
-  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-    <div class="container">
-      <a class="navbar-brand mr-4" href="/">AVI</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarToggle">
-        <div class="navbar-nav mr-auto">
-          <a class="nav-item nav-link" href="/">Home</a>
-          <!-- <a class="nav-item nav-link" href="/about">About</a> -->
-          <a class="nav-item nav-link" href="{% url 'add-project'%}">New Project</a>
-        </div>
-        <!-- Navbar Right Side -->
-        <div class="navbar-nav">
-          {% if user.is_authenticated%}
-          <a class="nav-item nav-link" href="{% url 'profile'%}">Profile</a>
-          <a class="nav-item nav-link" href="{% url 'logout'%}">Logout</a>
-          {%else%}
-          <a class="nav-item nav-link" href="{% url 'login'%}">Login</a>
-          <a class="nav-item nav-link" href="{% url 'register'%}">Register</a>
-          {%endif%}
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
-<main role="main" class="container">
-  <div class="row">
-    <div class="col-md-12">
+<main role="main">
+  {% include 'avi/navbar.html' %}
       {% if messages %}
       {% for message in messages %}
           <div class="alert alert-{{ message.tags }}"> 
@@ -54,9 +26,7 @@
       {% endfor %}
       {% endif %}
       {% block content %}{% endblock %}
-    </div>
-  </div>
-</main>
+</main style="overflow-x: hidden;">
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

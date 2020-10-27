@@ -1,0 +1,1 @@
+web: gunicorn your canvas.wsgi --log-file -

@@ -10,6 +10,9 @@ class Project(models.Model):
     date = models.DateField(auto_now_add=True)
     editor =models.ForeignKey(User,on_delete=models.CASCADE, default='')
 
-    def save(self):
-        super().save()
+    # def save(self):
+    #     super().save()
 
+        
+    def __str__(self):
+        return self.title
